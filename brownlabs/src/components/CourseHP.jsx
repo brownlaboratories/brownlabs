@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { useLocation, Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 function addProps(Component) {
   const GetProps = function (props) {
     const location = useLocation();
     const course = location.state;
-    console.log(course.course.units);
     return <Component {...props} course={course} />;
   };
   return GetProps;
@@ -21,7 +21,7 @@ class CourseHomepage extends Component {
     let course = this.props.course.course;
 
     let units = course.units;
-    let unitlist = units.map((unit) => <li>{unit}</li>);
+    let unitlist = units.map((unit) => <li key={unit}>{unit}</li>);
 
     return (
       <div>
@@ -31,9 +31,21 @@ class CourseHomepage extends Component {
         </h1>
         <p>{course.description}</p>
         <ul>{unitlist}</ul>
-        <button>
-          <Link to={"/courses"}>all courses</Link>
-        </button>
+        <Button>
+          <Link key={course.id} to={`/plan`} state={{ course }}>
+            Create a Study Plan
+          </Link>
+        </Button>
+        <Button>
+          <Link key={course.id} to={`/study`} state={{ course }}>
+            Practice with Reps
+          </Link>
+        </Button>
+        <Button>
+          <Link key={course.id} to={`/test`} state={{ course }}>
+            Take Practice Tests
+          </Link>
+        </Button>
       </div>
     );
   }
