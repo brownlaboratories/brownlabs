@@ -10,7 +10,6 @@ import Landing from "./components/Landing";
 import Catalog from "./components/Catalog";
 import Login from "./components/Login";
 import Dashboard from "./components/Student/Dashboard";
-import APPhysics1 from "./components/Courses/APPhysics1";
 import CourseHomepage from "./components/CourseHP";
 import Navigation from "./components/Navbar";
 import Plan from "./components/Plan";
