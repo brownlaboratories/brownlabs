@@ -34,6 +34,7 @@ class Landing extends Component {
         headers: {
           Authorization: `Bearer ${apiKey}`,
           "Content-Type": "application/json",
+          "OpenAI-Organization": "org-QpQSGTCE6Y3abHVNFVUokF49",
         },
         body: JSON.stringify({
           model: "text-davinci-003",
