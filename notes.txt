@@ -1,0 +1,27 @@
+BL Flow
+
+Study Set Generation / creation page:
+Filters:
+- course (subject)
+- unit/specific topic
+- type of problem (multi select)
+- difficulty of problems (could be somewhat placebo)
+
+>>>>>>>>>>>>
+
+Problem generation:
+- params from flow
+- return:
+	- context
+	- question/plug in details for graph
+	- difficulty
+	- answer choices
+	- correct answer index
+	- similar acceptable answers (frq)
+	- questionType: graph, frq, stimulus-based, mcq
+
+- generate similar question/answer sets but with differing numbers (how??)
+- validate q/a accuracy (how??)
+
+Problem fetch:
+- check db for similar questions 
