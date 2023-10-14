@@ -10,16 +10,19 @@
   },
   "engines": {
     "node": "20.5.0"
-},
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
-    "mongoose": "^7.4.1",
+    "jwt-decode": "^3.1.2",
+    "mongoose": "^7.6.2",
     "nodemon": "^3.0.1",
-    "openai": "^4.11.1"
+    "openai": "^4.12.1"
   }
 }
