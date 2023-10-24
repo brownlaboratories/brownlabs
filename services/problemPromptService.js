@@ -1,17 +1,6 @@
-const STEMProblem = require("../models/STEMProblem");
-
-const getProblemsByCriteria = async (course, unit, difficulty, type) => {
-  return await STEMProblem.find({
-    "metadata.course": course,
-    "metadata.unit": unit,
-    "metadata.difficulty": difficulty,
-    "metadata.format": type,
-  });
-};
-
-const createNewProblems = async (course, unit, difficulty, goal, format) => {
+function generatePrompt(format) {
     let systemMessage;
-    if (format === "Multiple Choice") {
+    if(format === "Multiple Choice") {
       systemMessage = `You are a specialized AI for generating educational test questions, specifically multiple-choice questions that encompass both conceptual understanding and mathematical calculations. For every conceptual question, have a ratio of two mathematical questions. Your task is to create questions that align with a specified Course, Unit, Difficulty, and Number of Questions. The questions may require the application of formulas, problem-solving techniques, or theoretical principles. Make sure the questions are formatted in the same way as problems of the course are supposed to be. Each question object should contain:
       - "question": The text of the question.
       - "options": An array of answer choices without letters in front.
@@ -29,42 +18,7 @@ const createNewProblems = async (course, unit, difficulty, goal, format) => {
     
     `;
     }
+    return systemMessage;
+  }
   
-    const userMessage = `Course: ${course}\nUnit: ${unit}\nDifficulty: ${difficulty}\nNumber of Questions: ${goal}`;
-  
-    const questions = await openAiService.generateSTEMProblems(systemMessage, userMessage);
-  
-    let newProblems;
-    if (format === "Multiple Choice") {
-      newProblems = questions.map((object) => ({
-        question: object.question,
-        options: object.options,
-        answer: object.correct_answer,
-        metadata: {
-          format: format,
-          difficulty: difficulty,
-          course: course,
-          unit: unit,
-        },
-      }));
-    } else if (format === "Manual Input") {
-      newProblems = questions.map((object) => ({
-        question: object.question,
-        answer: object.answer,
-        options: object.options,
-        metadata: {
-          format: format,
-          difficulty: difficulty,
-          course: course,
-          unit: unit,
-        },
-      }));
-    }
-  
-    return await STEMProblem.insertMany(newProblems);
-  };
-
-  
-module.exports = {
-  getProblemsByCriteria,
-};
+  module.exports = { generatePrompt };
