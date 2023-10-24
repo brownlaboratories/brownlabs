@@ -25,4 +25,5 @@ Problem generation:
 
 Problem fetch:
 - check db for similar questions 
-- 
+- if none, generate new question
+- if yes, return similar question
