@@ -1,4 +1,4 @@
-# Brownlabs
+# Brownlabs [deprecated]
 
 Infinite Reps
 
